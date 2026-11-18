@@ -21,15 +21,14 @@ solo; también se puede correr a mano desde **Actions → Publicar landing → R
 
 Ver en local: `python3 -m http.server -d quedamos-landing 8000` y abrir `http://localhost:8000`.
 
+Si en la página aparece este README en lugar de la landing, Pages está publicando desde `main`:
+cámbialo a `gh-pages`.
+
 ## Dominio propio (`quedamos.com.mx`)
 
-1. Crear `quedamos-landing/CNAME` con una sola línea: `quedamos.com.mx`. Desde ese momento la
-   dirección de `github.io` redirige al dominio, así que conviene hacerlo junto con el paso 2.
-2. En el DNS del dominio (GoDaddy):
-   - Registros `A` de `@` a `185.199.108.153`, `185.199.109.153`, `185.199.110.153` y
-     `185.199.111.153`.
-   - Registro `CNAME` de `www` a `cgardan1.github.io`.
-3. En **Settings → Pages**, escribir el dominio y activar **Enforce HTTPS** cuando aparezca.
-
-La imagen para compartir (`og:image`) y `og:url` ya apuntan a `https://quedamos.com.mx/`; hasta que
-el dominio funcione, las vistas previas en redes no mostrarán imagen.
+- El dominio vive en `quedamos-landing/CNAME`, para que el workflow lo copie a `gh-pages`. No va en la
+  raíz de `main`: si GitHub crea ahí un `CNAME` al editar el dominio en Settings, hay que moverlo a
+  `quedamos-landing/`.
+- DNS en GoDaddy: registros `A` de `@` a `185.199.108.153`, `185.199.109.153`, `185.199.110.153` y
+  `185.199.111.153`; `www` como `CNAME` (recomendado: a `cgardan1.github.io`).
+- En **Settings → Pages**, activar **Enforce HTTPS**.
